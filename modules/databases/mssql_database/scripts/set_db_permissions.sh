@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# update rover with odbcinst.ini > sql odbc driver to 17.7.2 / 17.6
+# Requires DevOps Agent MSI identity, rover to run "az login --identity"
+
 set -e
+az login --identity
 echo "[SQLSERVER]
 Driver = ODBC Driver 17 for SQL Server
 Server = tcp:${SQLCMDSERVER},1433
