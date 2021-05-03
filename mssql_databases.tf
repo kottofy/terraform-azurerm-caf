@@ -13,6 +13,7 @@ module "mssql_databases" {
   settings            = each.value
   server_id           = try(local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.mssql_server_key].id, local.combined_objects_mssql_servers[each.value.lz_key][each.value.mssql_server_key].id)
   server_name         = try(local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.mssql_server_key].name, local.combined_objects_mssql_servers[each.value.lz_key][each.value.mssql_server_key].name)
+  fqdn                = try(local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.mssql_server_key].fully_qualified_domain_name, local.combined_objects_mssql_servers[each.value.lz_key][each.value.mssql_server_key].fully_qualified_domain_name)
   elastic_pool_id     = try(each.value.elastic_pool_key, null) == null ? null : try(local.combined_objects_mssql_elastic_pools[local.client_config.landingzone_key][each.value.elastic_pool_key].id, local.combined_objects_mssql_elastic_pools[each.value.lz_key][each.value.elastic_pool_key].id)
   storage_accounts    = module.storage_accounts
   diagnostic_profiles = try(each.value.diagnostic_profiles, null)

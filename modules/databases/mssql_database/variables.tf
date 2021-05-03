@@ -5,6 +5,7 @@ variable "location" {}
 variable "settings" {}
 variable "server_id" {}
 variable "server_name" {}
+variable "fqdn" {}
 variable "storage_accounts" {}
 variable "elastic_pool_id" {
   default = null
